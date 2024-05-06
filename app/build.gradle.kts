@@ -91,6 +91,7 @@ androidComponents.onVariants { variant ->
                 }
                 val applicationId by variant.applicationId
                 val expected = setOf(
+                    "android.permission.NFC",
                     "$applicationId.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 )
                 check(actual.sorted() == expected.sorted()) {
@@ -107,4 +108,5 @@ androidComponents.onVariants { variant ->
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.compose.foundation:foundation:${Version.Android.compose}")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
 }
