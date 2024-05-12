@@ -27,7 +27,7 @@ import test.android.nfc.util.ActivityUtil
 import test.android.nfc.util.NfcAdapterUtil
 import test.android.nfc.util.compose.Button
 
-private fun tryFindTag(intent: Intent, onTagTechnology: (TagTechnology) -> Unit) {
+private fun tryFindTag(intent: Intent, onTagTechnology: (IsoDep) -> Unit) {
     if (intent.action != NfcAdapter.ACTION_TAG_DISCOVERED) {
         println("No action.")
         return
@@ -46,7 +46,7 @@ private fun tryFindTag(intent: Intent, onTagTechnology: (TagTechnology) -> Unit)
 }
 @Composable
 internal fun ScannerScreen(
-    onTagTechnology: (TagTechnology) -> Unit,
+    onTagTechnology: (IsoDep) -> Unit,
 ) {
     Box(
         modifier = Modifier
