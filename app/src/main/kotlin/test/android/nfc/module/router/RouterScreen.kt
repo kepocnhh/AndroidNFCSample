@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import test.android.nfc.module.scanner.ScannerScreen
+import test.android.nfc.module.tag.TagScreen
 import test.android.nfc.util.toHEX
 
 private object ISOError {
@@ -69,7 +70,12 @@ internal fun RouterScreen() {
                 )
             }
             else -> {
-                TODO()
+                TagScreen(
+                    tt = tt,
+                    onForget = {
+                      ttState.value = null
+                    },
+                )
             }
         }
     }
