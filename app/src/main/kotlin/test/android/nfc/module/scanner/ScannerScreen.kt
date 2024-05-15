@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.tech.IsoDep
-import android.nfc.tech.TagTechnology
+import android.provider.Settings
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +44,7 @@ private fun tryFindTag(intent: Intent, onTagTechnology: (IsoDep) -> Unit) {
     }
     onTagTechnology(tt)
 }
+
 @Composable
 internal fun ScannerScreen(
     onTagTechnology: (IsoDep) -> Unit,
@@ -119,6 +120,13 @@ internal fun ScannerScreen(
                         },
                     )
                 }
+                Button(
+                    text = "settings",
+                    onClick = {
+                        val intent = Intent(Settings.ACTION_NFC_SETTINGS)
+                        activity.startActivity(intent)
+                    },
+                )
             }
         }
     }
